@@ -1,6 +1,5 @@
 # TinyERP
-
-I will update detail informaiton soon
+I'm working on documentation for this on my blog. Please visit http://tranthanhtu.vn for more information.
 
 ## License
 This code was intent to be used for my fullstack training course. 
