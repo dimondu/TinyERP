@@ -1,5 +1,6 @@
 import { IRouteService } from "../services/irouteService";
-import { IModuleConfig } from "../models/imoduleConfig";
+//import { IModuleConfig } from "../models/imoduleConfig";
+import {IModuleConfigItem} from "../models/imoduleConfigItem";
 import { IoCNames } from "../ioc/enum";
 import gcHelper from "./gcHelper";
 
@@ -43,11 +44,18 @@ function resolveUrlFromPath(path: string, options: any): string {
     }
     return segments.toString(ROUTE_SEGTMENT_SEPARATOR);
 }
-function getModuleRoute(modules: Array<IModuleConfig>) {
+function getModuleRoute(modules: Array<IModuleConfigItem>) {
     let routes: Array<any> = [];
-    modules.forEach((module: any) => {
+    let defaultModule: IModuleConfigItem = null;
+    modules.forEach((module: IModuleConfigItem) => {
         routes.push({ path: module.urlPrefix, loadChildren: getModuleFullPath(module.path) });
+        if (module.isDefault && module.isDefault == true) {
+            defaultModule = module;
+        }
     });
+    if (defaultModule != null) {
+        routes.push({ path: "", redirectTo: defaultModule.urlPrefix, pathMatch: "full" });
+    }
     return routes;
 }
 
