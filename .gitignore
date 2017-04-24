@@ -1,1 +1,10 @@
-api/Application.Api/published/
+packages
+obj
+bin
+published
+client/node_modules/
+client/src/**/*.js.map
+client/src/**/*.js
+!client/resources
+!client/themes
+client/dist/
