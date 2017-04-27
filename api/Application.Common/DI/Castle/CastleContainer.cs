@@ -5,6 +5,7 @@
     using global::Castle.MicroKernel.Registration;
     using App.Common.Data;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class CastleContainer : IBaseContainer
     {
@@ -103,6 +104,11 @@
         public IList<IInterface> ResolveAll<IInterface>() where IInterface : class
         {
             return this.windsorContainer.ResolveAll<IInterface>();
+        }
+
+        public IList<Type> ResolveAll(Type type)
+        {
+            return new List<Type>((IEnumerable<Type>)this.windsorContainer.ResolveAll(type));
         }
 
         #endregion

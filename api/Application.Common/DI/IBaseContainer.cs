@@ -13,6 +13,7 @@
         void RegisterPerRequest<IInterface, TInstance>()
             where IInterface : class
             where TInstance : IInterface;
+        IList<Type> ResolveAll(Type type);
         IList<IInterface> ResolveAll<IInterface>() where IInterface : class;
         void RegisterSingleton<IInterface, IInstance>() where IInstance : IInterface where IInterface : class;
         void RegisterSingleton<IInterface, IInstance>(string refName) where IInstance : IInterface where IInterface : class;

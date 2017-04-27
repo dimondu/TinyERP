@@ -189,6 +189,8 @@
     <Compile Include="Event\BaseEventHandler.cs" />
     <Compile Include="Event\BaseEventManager.cs" />
     <Compile Include="Event\EventManagerStrategy.cs" />
+    <Compile Include="Event\Exception\EventHandlerConst.cs" />
+    <Compile Include="Event\Exception\EventHandlerNotFound.cs" />
     <Compile Include="Event\IEvent.cs" />
     <Compile Include="Event\IEventHandler.cs" />
     <Compile Include="Event\IEventHandlerStrategy.cs" />

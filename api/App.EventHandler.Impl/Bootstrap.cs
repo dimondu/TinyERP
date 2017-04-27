@@ -2,6 +2,8 @@
 {
     using App.Common.DI;
     using App.Common.Tasks;
+    using Common.Event;
+    using Event.Order;
 
     public class Bootstrap : BaseTask<IBaseContainer>, IBootstrapper
     {
@@ -11,6 +13,7 @@
 
         public override void Execute(IBaseContainer context)
         {
+            context.RegisterTransient<IEventHandler<OnCustomerDetailChanged>, App.EventHandler.Impl.Order.OrderEventHandler>();
         }
     }
 }

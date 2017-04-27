@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using Event;
     using Validation.Attribute;
 
     public class ObjectHelper
@@ -11,6 +12,11 @@
         public static TEntity Convert<TEntity>(object obj)
         {
             return AutoMapper.Mapper.Map<TEntity>(obj);
+        }
+
+        internal static string GetClassName<TEventType>(TEventType ev) where TEventType : IEvent
+        {
+            return typeof(TEventType).FullName;
         }
 
         internal static TEntity CreateInstance<TEntity>() where TEntity : class
