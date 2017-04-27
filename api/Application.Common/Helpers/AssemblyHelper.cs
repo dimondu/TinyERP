@@ -15,7 +15,7 @@
             return binFolderPath;
         }
 
-        public static void ExecuteTasks<TaskType, ContextType>(ContextType context, AssemblyType lookupIn) where TaskType : IBaseTask<ContextType>
+        public static void ExecuteTasks<TaskType, ContextType>(ContextType context, AssemblyType lookupIn) where TaskType : IExecutable<ContextType>
         {
             string assemblyName = AssemblyHelper.GetAssemblyNameBaseOnAssemblyType(lookupIn);
             IEnumerable<Type> tasksToRun = AssemblyHelper.GetTypes<TaskType>(assemblyName);
@@ -26,7 +26,7 @@
             }
         }
 
-        public static void ExecuteTasks<TaskType, ContextType>(ContextType context, bool runTasksInOrder = false) where TaskType : IBaseTask<ContextType>
+        public static void ExecuteTasks<TaskType, ContextType>(ContextType context, bool runTasksInOrder = false) where TaskType : IExecutable<ContextType>
         {
             IEnumerable<Type> tasksToRun = AssemblyHelper.GetTypes<TaskType>();
             if (runTasksInOrder)
@@ -42,9 +42,9 @@
             }
         }
 
-        private static void RunTasksInOrder<TaskType, ContextType>(IEnumerable<Type> tasks, ContextType context) where TaskType : IBaseTask<ContextType>
+        private static void RunTasksInOrder<TaskType, ContextType>(IEnumerable<Type> tasks, ContextType context) where TaskType : IExecutable<ContextType>
         {
-            IList<IBaseTask<ContextType>> taskInstances = new List<IBaseTask<ContextType>>();
+            IList<IExecutable<ContextType>> taskInstances = new List<IExecutable<ContextType>>();
             foreach (var task in tasks)
             {
                 TaskType instance = (TaskType)Activator.CreateInstance(task);

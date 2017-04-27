@@ -216,6 +216,7 @@
     <Compile Include="MVC\Attributes\ResponseWrapper.cs" />
     <Compile Include="MVC\Attributes\ValidateMimeMultipartContentFilter.cs" />
     <Compile Include="Providers\MultipartFormDataMemoryStreamProvider.cs" />
+    <Compile Include="Tasks\IExecutable.cs" />
     <Compile Include="UITest\BrowserRef.cs" />
     <Compile Include="UITest\IBrower.cs" />
     <Compile Include="UITest\Mail\UITestResultNotificationEmail.cs" />
