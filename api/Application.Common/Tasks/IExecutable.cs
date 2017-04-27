@@ -1,8 +1,7 @@
 ﻿namespace App.Common.Tasks
 {
-    public interface IExecutable<ContentType>
+    public interface IOrderedExecutable<ContentType>: IExecutable<ContentType>
     {
         int Order { get; }
-        void Execute(ContentType context);
     }
 }

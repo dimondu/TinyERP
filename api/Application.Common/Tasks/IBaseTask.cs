@@ -1,6 +1,6 @@
 ﻿namespace App.Common.Tasks
 {
-    public interface IBaseTask<ContextType>: IExecutable<ContextType>
+    public interface IBaseTask<ContextType>: IOrderedExecutable<ContextType>
     {
         
         bool IsValid(ApplicationType type);

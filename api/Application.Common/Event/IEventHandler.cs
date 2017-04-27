@@ -2,7 +2,7 @@
 {
     using App.Common.Tasks;
 
-    public interface IEventHandler<TEventType> : IBaseTask<TEventType> where TEventType : IEvent
+    public interface IEventHandler<TEventType> : IExecutable<TEventType> where TEventType : IEvent
     {
     }
 }
