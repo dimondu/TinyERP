@@ -8,11 +8,17 @@
     {
         public void Publish<TEventType>(TEventType ev) where TEventType : IEvent
         {
-            IEventHandler<TEventType> handler= IoC.Container.Resolve<IEventHandler<TEventType>>();
-            if (handler == null) {
+            object handler = IoC.Container.Resolve(ev.HandlerType);
+            if (handler == null)
+            {
                 throw new EventHandlerNotFound<TEventType>();
             }
-            handler.Execute(ev);
+            ObjectHelper.Invoke(handler, "Execute", ev);
+            //IEventHandler<TEventType> handler= IoC.Container.Resolve<IEventHandler<TEventType>>(ev.HandlerType);
+            //if (handler == null) {
+            //    throw new EventHandlerNotFound<TEventType>();
+            //}
+            //handler.Execute(ev);
             //IEventManager eventManager = IoC.Container.Resolve<IEventManager>();
             //eventManager.Publish<TEventType>(ev);
         }

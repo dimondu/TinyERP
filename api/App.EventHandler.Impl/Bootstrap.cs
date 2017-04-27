@@ -13,7 +13,8 @@
 
         public override void Execute(IBaseContainer context)
         {
-            context.RegisterTransient<IEventHandler<OnCustomerDetailChanged>, App.EventHandler.Impl.Order.OrderEventHandler>();
+            context.RegisterTransient<IEventHandler<OnCustomerDetailChanged>, App.EventHandler.Impl.Order.OrderEventHandler>("OnCustomerDetailChanged");
+            context.RegisterTransient<IEventHandler<OnOrderLineItemAdded>, App.EventHandler.Impl.Order.OrderEventHandler>("OnOrderLineItemAdded");
         }
     }
 }

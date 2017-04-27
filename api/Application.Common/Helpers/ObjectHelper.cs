@@ -14,6 +14,12 @@
             return AutoMapper.Mapper.Map<TEntity>(obj);
         }
 
+        internal static void Invoke<TEventType>(object handler, string methodName, TEventType arg) where TEventType : IEvent
+        {
+            MethodInfo method = handler.GetType().GetMethod(methodName,new Type[] { arg.GetType()});
+            method.Invoke(handler, new object[] { arg });
+        }
+
         internal static string GetClassName<TEventType>(TEventType ev) where TEventType : IEvent
         {
             return typeof(TEventType).FullName;

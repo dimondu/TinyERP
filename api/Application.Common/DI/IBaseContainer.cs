@@ -26,6 +26,7 @@
             where IInterface : class;
         IInterface Resolve<IInterface>(string refName) where IInterface : class;
         IInterface Resolve<IInterface>() where IInterface : class;
+        object Resolve(Type type);
         IInterface Resolve<IInterface>(IUnitOfWork unitOfWork) where IInterface : class;
     }
 }

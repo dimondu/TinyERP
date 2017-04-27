@@ -4,9 +4,10 @@ using System;
 
 namespace App.Event.Support
 {
-    public class SupportRequestOnStatusChanged : IEvent
+    public class SupportRequestOnStatusChanged : BaseEvent
     {
-        public SupportRequestOnStatusChanged(Guid itemId, ItemStatus status)
+        
+        public SupportRequestOnStatusChanged(Guid itemId, ItemStatus status) 
         {
             this.SupportRequestId = itemId;
             this.Status = status;

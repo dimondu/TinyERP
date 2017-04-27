@@ -96,6 +96,11 @@
             return this.windsorContainer.Resolve<TInterface>();
         }
 
+        public object Resolve(Type type)
+        {
+            return this.windsorContainer.Resolve(type);
+        }
+
         public TInterface Resolve<TInterface>(IUnitOfWork unitOfWork) where TInterface : class
         {
             return this.windsorContainer.Resolve<TInterface>(new { uow = unitOfWork });
