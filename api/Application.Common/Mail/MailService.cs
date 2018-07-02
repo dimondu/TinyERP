@@ -18,16 +18,18 @@ namespace App.Common.Mail
 
         private MailMessage GetMailMessage<TEntity>(TEntity emailConent) where TEntity : IEmailContent
         {
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress(Configuration.Current.Mail.DefaultSender, Configuration.Current.Mail.DisplayName);
-            IList<MailAddress> toAddresses = GetMaillAddresses(emailConent.To);
-            foreach (MailAddress toAddress in toAddresses) {
+            var message = new MailMessage
+            {
+                From = new MailAddress(Configuration.Current.Mail.DefaultSender, Configuration.Current.Mail.DisplayName)
+            };
+            var toAddresses = GetMaillAddresses(emailConent.To);
+            foreach (var toAddress in toAddresses) {
                 message.To.Add(toAddress);
             }
             message.Body = ResourceHelper.Resolve(emailConent.Body);
             message.Subject = ResourceHelper.Resolve(emailConent.Subject);
             message.IsBodyHtml = true;
-            foreach (string attchment in emailConent.Attachments) {
+            foreach (var attchment in emailConent.Attachments) {
                 message.Attachments.Add(new Attachment(attchment));
             }
             return message;

@@ -3,3 +3,5 @@
 ################################################################################
 
 /api/.vs/Application
+/client/.idea
+/client/package-lock.json

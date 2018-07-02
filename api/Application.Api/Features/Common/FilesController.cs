@@ -28,8 +28,7 @@ namespace App.Api.Features.Common
             byte[] imageContent = ImageHelper.GetContent(bitmap);
 
             MemoryStream ms = new MemoryStream(imageContent);
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            response.Content = new StreamContent(ms);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK) {Content = new StreamContent(ms)};
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
             return response;
         }
